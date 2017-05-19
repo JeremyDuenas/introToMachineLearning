@@ -3,6 +3,7 @@ import quandl
 import math
 import datetime
 import matplotlib.pyplot as plt
+import pickle
 from matplotlib import style
 import numpy as np
 from sklearn import preprocessing, cross_validation, svm
@@ -42,12 +43,16 @@ df.dropna(inplace=True)
 
 # y = labels
 y = np.array(df['label'])
-y = np.array(df['label'])
 
 X_train, X_test, y_train, y_test = cross_validation.train_test_split(X,y,test_size=.02)
 
 clf = LinearRegression(n_jobs=-1)
 clf.fit(X_train, y_train)
+with open('linearregression.pickle','wb') as f:
+    pickle.dump(clf,f)
+
+pickle_in = open('linearregression.pickle', 'rb')
+clf = pickle.load(pickle_in)
 
 accuracy = clf.score(X_test,y_test)
 
