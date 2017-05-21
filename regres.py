@@ -11,7 +11,7 @@ from sklearn.linear_model import LinearRegression
 
 style.use('ggplot')
 
-df = quandl.get('WIKI/GOOGL')
+df = quandl.get('WIKI/AAPL')
 df = df[['Adj. Open','Adj. High','Adj. Low','Adj. Close','Adj. Volume',]]
 df['HL_PCT'] = (df['Adj. High'] - df['Adj. Close']) / df['Adj. Close'] * 100.0
 df['PCT_change'] = (df['Adj. Close'] - df['Adj. Open']) / df['Adj. Open'] * 100.0
@@ -25,7 +25,7 @@ forecast_col = 'Adj. Close'
 
 df.fillna(-99999, inplace=True)
 
-forecast_out = int(math.ceil(0.01*len(df)))
+forecast_out = int(math.ceil(0.001*len(df)))
 print(forecast_out)
 
 df['label'] = df[forecast_col].shift(-forecast_out)
