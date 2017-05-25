@@ -8,8 +8,8 @@ style.use('fivethirtyeight')
 xValues = np.array([1,2,3,4,5,6], dtype=np.float64)
 yValues = np.array([5,4,6,5,6,7], dtype=np.float64)
 
-def create_dataset(h,, variance, step=2, correlation=False):
-
+def create_dataset(h, variance, step=2, correlation=False):
+    return np.array(xs, dtype=np.float64), np.array(yValues, dtype=np.float64)
 
 def best_fit_slope_and_intercept(xValues, yValues):
     m = ( ((mean(xValues) * mean(yValues)) - mean(xValues * yValues)) /
