@@ -25,14 +25,14 @@ forecast_col = 'Adj. Close'
 
 df.fillna(-99999, inplace=True)
 
-forecast_out = int(math.ceil(0.001*len(df)))
+forecast_out = int(math.ceil(0.1*len(df)))
 print(forecast_out)
 
 df['label'] = df[forecast_col].shift(-forecast_out)
 
 
 # X = features
-X = np.array(df.drop(['label'],1))
+X = np.array(df.drop(['label','Adj. Close'],1))
 X = preprocessing.scale(X)
 X_lately = X[-forecast_out:]
 X = X[:-forecast_out]
