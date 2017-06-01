@@ -65,3 +65,4 @@ for group in test_set:
         total +=1
 
 print('Accuracy:', correct/total)
+print(df.head)
